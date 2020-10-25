@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>MyCalendar</title>
+</head>
+<body>
+	<h4 id="testAlert">{{.NameTest}}まで{{.RemainingDays}}</h4>
+	<table class="table-calendar" id="calendar">
+		<h4 id="monthAndYear">{{.SelectedYear}}年{{.SelectedMonth}}月</h4>
+		<form action="/changeMonth" method="post">
+		<input type="submit" name="whichMonth" value="lastMonth">
+    	<input type="submit" name="whichMonth" value="nextMonth">
+		</form>
+    	<thead id="thead-month">
+	    	<tr>
+	    		<th data-days="日">日</th>
+	    		<th data-days="月">月</th>
+	    		<th data-days="火">火</th>
+	    		<th data-days="水">水</th>
+	    		<th data-days="木">木</th>
+	    		<th data-days="金">金</th>
+	    		<th data-days="土">土</th>
+	    	</tr>
+    	</thead>
+        <tbody id="calendar-body">
+        	{{range .CalendarRows}}
+    		<tr>{{ . }}</tr>
+			{{end}}
+        </tbody>
+    </table>
+    <form action="/settingTest">
+    	<p><label>試験名<input type="text" name="nameTest"></label></p>
+    	<p><label>試験日<input type="date" name="dateTest"></label></p>
+    	<input type="submit" value="登録">
+    </form>
+</body>
+</html>
